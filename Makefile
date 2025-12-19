@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 21:59:30 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/18 11:27:25 by mcolin           ###   ########.fr        #
+#    Updated: 2025/12/19 10:37:16 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,17 @@ NAME = so_long
 SRCS_DIR = srcs/
 SOURCES =	$(SRCS_DIR)main.c			\
 			$(SRCS_DIR)error.c			\
+			$(SRCS_DIR)window.c			\
+			$(SRCS_DIR)event.c			\
 			$(SRCS_DIR)map/check_map.c	\
 			$(SRCS_DIR)map/set_map.c	\
 
 OBJ_DIR = .build/
 OBJS = $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.o)
 
-CFLAGS = -Wall -Werror -Wextra -g
+DEPS = $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.d)
+
+CFLAGS = -MP -MMD -Wall -Werror -Wextra -g
 INCLUDE = -I includes/ -I libft/includes/ -I MacroLibX/includes/
 
 all: $(NAME)
@@ -54,3 +58,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all fclean clean re gdb
+
+-include $(DEPS)

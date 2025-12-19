@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:01:32 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/18 11:53:18 by mcolin           ###   ########.fr       */
+/*   Updated: 2025/12/19 09:23:13 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	flood_fill(char **map, size_t x, size_t y)
 	flood_fill(map, x, y - 1);
 }
 
-static void	get_player_position(char **map, size_t *player_pos)
+void	get_entity_position(char **map, char entity, size_t *entity_pos)
 {
 	size_t	x;
 	size_t	y;
@@ -59,10 +59,10 @@ static void	get_player_position(char **map, size_t *player_pos)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (map[y][x] == entity)
 			{
-				player_pos[0] = x;
-				player_pos[1] = y;
+				entity_pos[0] = x;
+				entity_pos[1] = y;
 				return ;
 			}
 			x++;
@@ -102,7 +102,7 @@ char	is_valid_path(char **map)
 	map_cpy = ft_tab_strdup(map);
 	if (!map_cpy)
 		exit_error(MSG_MALLOC_ERROR, map, FAIL);
-	get_player_position(map, player_pos);
+	get_entity_position(map, 'P', player_pos);
 	if (player_pos[0] == 0 && player_pos[1] == 0)
 	{
 		ft_free_split(map_cpy);
