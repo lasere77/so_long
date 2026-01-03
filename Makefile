@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 21:59:30 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/19 10:37:16 by mcolin           ###   ########.fr        #
+#    Updated: 2026/01/03 17:24:38 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SOURCES =	$(SRCS_DIR)main.c			\
 			$(SRCS_DIR)error.c			\
 			$(SRCS_DIR)window.c			\
 			$(SRCS_DIR)event.c			\
+			$(SRCS_DIR)display.c		\
 			$(SRCS_DIR)map/check_map.c	\
 			$(SRCS_DIR)map/set_map.c	\
 

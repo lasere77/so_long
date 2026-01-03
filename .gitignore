@@ -1,5 +1,7 @@
 .build
 .vscode
+compile_commands.json
+.cache
 so_long
 libft
 MacroLibX

@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:27:25 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 13:22:58 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 15:15:33 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static char	check_map_shape(char **map)
 		len_line = ft_strlen(map[nb_line]);
 		nb_line++;
 	}
+	if (len_line > 50 || nb_line > 50)
+		return (1);
 	return (0);
 }
 
@@ -99,7 +101,6 @@ static char	**set_map(int fd, ssize_t map_line)
 
 char	**get_map(int argc, char **argv)
 {
-	ssize_t	map_line;
 	int		fd_map_file;
 	char	**map;
 
@@ -110,13 +111,12 @@ char	**get_map(int argc, char **argv)
 	fd_map_file = open(argv[1], O_RDONLY);
 	if (fd_map_file == -1)
 		exit_error(MSG_INVALIDE_PATH, NULL, FAIL);
-	map_line = get_number_line_file(argv[1]);
-	map = set_map(fd_map_file, map_line);
+	map = set_map(fd_map_file, get_number_line_file(argv[1]));
 	close(fd_map_file);
 	if (!map)
 		exit_error(MSG_EMPTY_FILE, map, FAIL);
 	if (check_map_shape(map))
-		exit_error(MGS_RECTANGULAR_MAP, map, FAIL);
+		exit_error(MSG_RECTANGULAR_MAP, map, FAIL);
 	if (check_map_content(map))
 		exit_error(MSG_ERROR_MAP_CONTENT, map, FAIL);
 	if (!is_surrounded_map(map))

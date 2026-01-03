@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:56:32 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/18 18:53:51 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 17:55:13 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 # define MSG_EMPTY_FILE "Error\nempty map file...\n"
 
-# define MGS_RECTANGULAR_MAP "Error\nThe map must be rectangular.\n"
+# define MSG_RECTANGULAR_MAP "Error\nThe map must be rectangular.\n\
+with a maximum dimension of: 50x50\n"
 
 # define MSG_SURROU_MAP "Error\nThe map must be surrounded by walls.\n"
 
@@ -38,15 +39,12 @@ you can open a ticket at: https://github.com/lasere77/so_long\n"
 # define MSG_MALLOC_ERROR "Error\nMemory failure... \
 Please check that your pc is not on fire.\n"
 
-# define MSG_ERROR_BLAME_THE_DEV "Error\nblame the developer...\n"
+# define MSG_ERROR_TEXTURES_NOT_FOUND "Error\ntexture not found...\n"
 
 # include "error.h"
 # include "libft.h"
 # include "get_next_line.h"
 # include <fcntl.h>
-
-# include <stdlib.h>
-# include <stdio.h>
 
 char	**get_map(int argc, char **argv);
 

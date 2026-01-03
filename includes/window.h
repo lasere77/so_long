@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/19 15:11:54 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 18:29:38 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_data
 	mlx_image	exit;
 	t_player	player;
 	char		**map;
+	int			width;
+	int			height;
 }				t_data;
 
 size_t	get_ideal_window_height(char **map);

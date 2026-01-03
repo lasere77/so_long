@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:59:38 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/19 12:01:41 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 19:01:03 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	get_ideal_window_height(char **map)
 	i = 0;
 	while (map[i])
 		i++;
-	return (i);	
+	return (i);
 }
 
 void	init_window(t_data *data)
@@ -31,16 +31,23 @@ void	init_window(t_data *data)
 	info.title = "so_longggggggggggggggggg";
 	info.width = WINDOW_SIZE_PER_SPRITE * (ft_strlen(data->map[0]) - 1);
 	info.height = WINDOW_SIZE_PER_SPRITE * get_ideal_window_height(data->map);
-	data->window = mlx_new_window(data->mlx, &info);	
+	data->width = info.width;
+	data->height = info.height;
+	data->window = mlx_new_window(data->mlx, &info);
 }
 
 void	destroy_window(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->floor);
-	mlx_destroy_image(data->mlx, data->wall);
-	mlx_destroy_image(data->mlx, data->exit);
-	mlx_destroy_image(data->mlx, data->collectible);
-	mlx_destroy_image(data->mlx, data->player.sprite);
+	if (data->floor)
+		mlx_destroy_image(data->mlx, data->floor);
+	if (data->wall)
+		mlx_destroy_image(data->mlx, data->wall);
+	if (data->exit)
+		mlx_destroy_image(data->mlx, data->exit);
+	if (data->collectible)
+		mlx_destroy_image(data->mlx, data->collectible);
+	if (data->player.sprite)
+		mlx_destroy_image(data->mlx, data->player.sprite);
 	mlx_destroy_window(data->mlx, data->window);
 	mlx_destroy_context(data->mlx);
 	ft_free_split(data->map);
