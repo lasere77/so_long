@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:27:25 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/18 11:29:41 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 13:22:58 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,36 +71,35 @@ static char	check_map_content(char **map)
 	return (nb_char[0] == 0 || nb_char[1] != 1 || nb_char[2] != 1);
 }
 
-static char	**set_map(int fd)
+static char	**set_map(int fd, ssize_t map_line)
 {
 	char	**map;
-	char	**tmp;
-	char	*str;
 	size_t	i;
 
-	map = NULL;
-	str = get_next_line(fd);
-	i = 0;
-	while (str)
+	map = malloc(sizeof(char *) * (map_line + 1));
+	if (!map || map_line <= 0)
 	{
-		tmp = map;
-		map = realloc(map, sizeof(char *) * (i + 2));
-		if (!map)
+		close(fd);
+		exit_error(MSG_MALLOC_ERROR, map, FAIL);
+	}
+	i = 0;
+	while (i < (size_t)map_line)
+	{
+		map[i] = get_next_line(fd);
+		if (!map[i])
 		{
-			ft_free_split(tmp);
-			exit_error(MSG_MALLOC_ERROR, NULL, FAIL);
+			close(fd);
+			exit_error(MSG_MALLOC_ERROR, map, FAIL);
 		}
-		map[i] = str;
-		str = get_next_line(fd);
 		i++;
 	}
-	if (map)
-		map[i] = NULL;
+	map[i] = get_next_line(fd);
 	return (map);
 }
 
 char	**get_map(int argc, char **argv)
 {
+	ssize_t	map_line;
 	int		fd_map_file;
 	char	**map;
 
@@ -111,7 +110,9 @@ char	**get_map(int argc, char **argv)
 	fd_map_file = open(argv[1], O_RDONLY);
 	if (fd_map_file == -1)
 		exit_error(MSG_INVALIDE_PATH, NULL, FAIL);
-	map = set_map(fd_map_file);
+	map_line = get_number_line_file(argv[1]);
+	map = set_map(fd_map_file, map_line);
+	close(fd_map_file);
 	if (!map)
 		exit_error(MSG_EMPTY_FILE, map, FAIL);
 	if (check_map_shape(map))
