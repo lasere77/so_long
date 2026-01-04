@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:14 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 16:24:46 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 20:48:20 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	display_collectible(t_data *data)
 	}
 }
 
-static void	tkt(char c, t_data *data, int sprite_offset_x, int sprite_offset_y)
+static void	display(char c, t_data *data, int sprite_offset_x, int sprite_offset_y)
 {
 	if (c == '1')
 		mlx_put_image_to_window(data->mlx, data->window, data->wall,
@@ -91,7 +91,7 @@ void	display_map(t_data *data)
 				+ j * SPRITE_SIZE;
 			sprite_offset_y = data->height / 2 - data->player.y * SPRITE_SIZE
 				+ i * SPRITE_SIZE;
-			tkt(data->map[i][j], data, sprite_offset_x, sprite_offset_y);
+			display(data->map[i][j], data, sprite_offset_x, sprite_offset_y);
 			j++;
 		}
 		i++;

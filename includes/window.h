@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 18:29:38 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/03 20:42:49 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "mlx.h"
 # include "libft.h"
 
-# define SPRITE_SIZE 16
-# define WINDOW_SIZE_PER_SPRITE 16
+# define SPRITE_SIZE 64
+# define WINDOW_SIZE_PER_SPRITE 64
 
 typedef struct s_player
 {

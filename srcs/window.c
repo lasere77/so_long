@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:59:38 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 19:01:03 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 09:43:03 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	init_window(t_data *data)
 	data->mlx = mlx_init();
 	ft_bzero(&info, sizeof(mlx_window_create_info));
 	info.title = "so_longggggggggggggggggg";
-	info.width = WINDOW_SIZE_PER_SPRITE * (ft_strlen(data->map[0]) - 1);
-	info.height = WINDOW_SIZE_PER_SPRITE * get_ideal_window_height(data->map);
+	info.width = 1920;
+	info.height = 1080;
 	data->width = info.width;
 	data->height = info.height;
 	data->window = mlx_new_window(data->mlx, &info);

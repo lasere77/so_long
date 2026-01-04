@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 19:01:31 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 09:44:59 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #define TEXTURE_WALL "assets/textures/wall.png"
 #define TEXTURE_EXIT "assets/textures/exit.png"
 #define TEXTURE_COLLECTIBLE "assets/textures/collectible.png"
-#define TEXTURE_PLAYER "assets/textures/player.png"
+#define TEXTURE_PLAYER "assets/textures/player/player.png"
 
 static size_t	get_nb_total_collectible(char **map)
 {
@@ -67,10 +67,8 @@ static void	update(void *param)
 	display_map(data);
 	display_collectible(data);
 	display_exit(data);
-	sprite_offset_x = data->width / 2 - data->player.x * SPRITE_SIZE
-		+ data->player.x * SPRITE_SIZE;
-	sprite_offset_y = data->height / 2 - data->player.y * SPRITE_SIZE
-		+ data->player.y * SPRITE_SIZE;
+	sprite_offset_x = data->width / 2 ;
+	sprite_offset_y = data->height / 2;
 	mlx_put_image_to_window(data->mlx, data->window, data->player.sprite,
 		sprite_offset_x, sprite_offset_y);
 }
