@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:01:32 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/19 09:23:13 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 12:53:09 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	is_surrounded_map(char **map)
 
 static void	flood_fill(char **map, size_t x, size_t y)
 {
-	if (map[y][x] == '1' || map[y][x] == '~')
+	if (map[y][x] == '1' || map[y][x] == 'Z' ||map[y][x] == '~')
 		return ;
 	map[y][x] = '~';
 	flood_fill(map, x + 1, y);
@@ -74,18 +74,12 @@ void	get_entity_position(char **map, char entity, size_t *entity_pos)
 static char	check_flood_fill(char **map)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
 	while (map[i])
 	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] != '1' && map[i][j] != '~' && map[i][j] != '\n')
-				return (1);
-			j++;
-		}
+		if (ft_check_chrs(map[i], "1Z~\n"))
+			return (1);
 		i++;
 	}
 	return (0);
