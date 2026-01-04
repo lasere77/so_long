@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:21:47 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/19 15:11:58 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 12:43:46 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ typedef enum e_key
 }	t_key;
 
 void	init_event(t_data *data);
+char	is_player_ending_game(t_data *data);
 
 #endif

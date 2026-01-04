@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:32:33 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 12:46:32 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ static void	update(void *param)
 	int		sprite_offset_x;
 
 	data = (t_data *)param;
-	if (!data->player.nb_item
-		&& data->map[data->player.y][data->player.x] == 'E')
+	if (is_player_ending_game(data))
 		mlx_loop_end(((t_data *)param)->mlx);
 	mlx_clear_window(data->mlx, data->window, (mlx_color){.rgba = 0});
 	display_map(data);
@@ -69,8 +68,6 @@ static void	update(void *param)
 	mlx_put_image_to_window(data->mlx, data->window, data->player.sprite,
 		sprite_offset_x, sprite_offset_y);
 }
-
-
 
 int	main(int argc, char **argv)
 {
