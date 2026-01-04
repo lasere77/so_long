@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 20:42:49 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 10:38:14 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	mlx_image	wall;
 	mlx_image	collectible;
 	mlx_image	exit;
+	mlx_image	enemy;
 	t_player	player;
 	char		**map;
 	int			width;

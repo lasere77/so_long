@@ -6,20 +6,21 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 21:59:30 by mcolin            #+#    #+#              #
-#    Updated: 2026/01/03 17:24:38 by mcolin           ###   ########.fr        #
+#    Updated: 2026/01/04 11:59:59 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
 NAME = so_long
 SRCS_DIR = srcs/
-SOURCES =	$(SRCS_DIR)main.c			\
-			$(SRCS_DIR)error.c			\
-			$(SRCS_DIR)window.c			\
-			$(SRCS_DIR)event.c			\
-			$(SRCS_DIR)display.c		\
-			$(SRCS_DIR)map/check_map.c	\
-			$(SRCS_DIR)map/set_map.c	\
+SOURCES =	$(SRCS_DIR)main.c				\
+			$(SRCS_DIR)error.c				\
+			$(SRCS_DIR)event.c				\
+			$(SRCS_DIR)renderer/display.c	\
+			$(SRCS_DIR)renderer/textures.c	\
+			$(SRCS_DIR)renderer/window.c	\
+			$(SRCS_DIR)map/check_map.c		\
+			$(SRCS_DIR)map/set_map.c		\
 
 OBJ_DIR = .build/
 OBJS = $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.o)
@@ -39,6 +40,8 @@ $(NAME): make_dir $(OBJS)
 make_dir:
 	@mkdir -p .build/
 	@mkdir -p .build/map
+	@mkdir -p .build/map
+	@mkdir -p .build/renderer
 	
 $(OBJ_DIR)%.o:  $(SRCS_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDE) $< -c -o $@

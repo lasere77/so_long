@@ -6,18 +6,14 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 09:44:59 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 12:32:33 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
+#include "textures.h"
+#include "mlx.h"
 #include <unistd.h>
-
-#define TEXTURE_FLOOR "assets/textures/floor.png"
-#define TEXTURE_WALL "assets/textures/wall.png"
-#define TEXTURE_EXIT "assets/textures/exit.png"
-#define TEXTURE_COLLECTIBLE "assets/textures/collectible.png"
-#define TEXTURE_PLAYER "assets/textures/player/player.png"
 
 static size_t	get_nb_total_collectible(char **map)
 {
@@ -67,27 +63,14 @@ static void	update(void *param)
 	display_map(data);
 	display_collectible(data);
 	display_exit(data);
+	display_enemy(data);
 	sprite_offset_x = data->width / 2 ;
 	sprite_offset_y = data->height / 2;
 	mlx_put_image_to_window(data->mlx, data->window, data->player.sprite,
 		sprite_offset_x, sprite_offset_y);
 }
 
-static char	set_texture(t_data *data)
-{
-	if (access(TEXTURE_FLOOR, R_OK) || access(TEXTURE_WALL, R_OK)
-		|| access(TEXTURE_EXIT, R_OK) || access(TEXTURE_COLLECTIBLE, R_OK)
-		|| access(TEXTURE_PLAYER, R_OK))
-		return (1);
-	data->floor = mlx_new_image_from_file(data->mlx, TEXTURE_FLOOR, NULL, NULL);
-	data->wall = mlx_new_image_from_file(data->mlx, TEXTURE_WALL, NULL, NULL);
-	data->exit = mlx_new_image_from_file(data->mlx, TEXTURE_EXIT, NULL, NULL);
-	data->collectible = mlx_new_image_from_file(data->mlx,
-			TEXTURE_COLLECTIBLE, NULL, NULL);
-	data->player.sprite = mlx_new_image_from_file(data->mlx,
-			TEXTURE_PLAYER, NULL, NULL);
-	return (0);
-}
+
 
 int	main(int argc, char **argv)
 {

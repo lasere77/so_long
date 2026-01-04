@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:56:32 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 17:55:13 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 11:01:47 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ you can open a ticket at: https://github.com/lasere77/so_long\n"
 Please check that your pc is not on fire.\n"
 
 # define MSG_ERROR_TEXTURES_NOT_FOUND "Error\ntexture not found...\n"
+
+# define CHAR_MAP_ACCEPT "CEPZ10\n"
 
 # include "error.h"
 # include "libft.h"

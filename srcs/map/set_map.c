@@ -6,10 +6,11 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:27:25 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/03 15:15:33 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 11:02:24 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "map.h"
 
 static char	is_valid_extention(char *name_file)
@@ -57,15 +58,14 @@ static char	check_map_content(char **map)
 	i = 0;
 	while (map[i])
 	{
+		if (ft_check_chrs(map[i], CHAR_MAP_ACCEPT))
+			return (1);
 		j = 0;
 		while (map[i][j])
 		{
 			nb_char[0] += map[i][j] == 'C';
 			nb_char[1] += map[i][j] == 'E';
 			nb_char[2] += map[i][j] == 'P';
-			if (map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P'
-				&& map[i][j] != '1' && map[i][j] != '0' && map[i][j] != '\n')
-				return (1);
 			j++;
 		}
 		i++;
