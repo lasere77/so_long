@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 10:38:14 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 13:45:50 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define SPRITE_SIZE 64
 # define WINDOW_SIZE_PER_SPRITE 64
+# define FPS_GOAl 60
 
 typedef struct s_player
 {

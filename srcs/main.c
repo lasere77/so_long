@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:46:32 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 16:11:39 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "textures.h"
 #include "mlx.h"
 #include <unistd.h>
+
+#define PATH_FONT "font/font.ttf"
 
 static size_t	get_nb_total_collectible(char **map)
 {
@@ -52,10 +54,10 @@ static void	init_player(t_player *player, char **map)
 static void	update(void *param)
 {
 	t_data	*data;
-	int		sprite_offset_y;
-	int		sprite_offset_x;
+	char	*str;
 
 	data = (t_data *)param;
+	enemy_animation(data);
 	if (is_player_ending_game(data))
 		mlx_loop_end(((t_data *)param)->mlx);
 	mlx_clear_window(data->mlx, data->window, (mlx_color){.rgba = 0});
@@ -63,10 +65,12 @@ static void	update(void *param)
 	display_collectible(data);
 	display_exit(data);
 	display_enemy(data);
-	sprite_offset_x = data->width / 2 ;
-	sprite_offset_y = data->height / 2;
+	str = ft_itoa(data->player.nb_move);
+	if (str)
+		mlx_string_put(data->mlx, data->window, 20, 20, (mlx_color){ .rgba = 0x0020FFFF }, str);
+	free(str);
 	mlx_put_image_to_window(data->mlx, data->window, data->player.sprite,
-		sprite_offset_x, sprite_offset_y);
+		data->width / 2, data->height / 2);
 }
 
 int	main(int argc, char **argv)
@@ -81,6 +85,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_window(&data);
+	mlx_set_fps_goal(data.mlx, FPS_GOAl);
 	if (set_texture(&data))
 	{
 		destroy_window(&data);
@@ -88,6 +93,7 @@ int	main(int argc, char **argv)
 	}
 	init_event(&data);
 	init_player(&(data.player), data.map);
+	mlx_set_font_scale(data.mlx, PATH_FONT, 16.f);
 	mlx_add_loop_hook(data.mlx, update, &data);
 	mlx_loop(data.mlx);
 	destroy_window(&data);
