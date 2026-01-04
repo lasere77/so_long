@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:01:32 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:53:09 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 18:15:04 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static char	check_flood_fill(char **map)
 	i = 0;
 	while (map[i])
 	{
-		if (ft_check_chrs(map[i], "1Z~\n"))
+		if (ft_check_chrs(map[i], "10Z~\n"))
 			return (1);
 		i++;
 	}

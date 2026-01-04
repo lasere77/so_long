@@ -6,14 +6,15 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:27:25 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:54:59 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 18:54:40 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "libft.h"
 #include "map.h"
 
-static char	is_valid_extention(char *name_file)
+static char	is_valid_extension(char *name_file)
 {
 	size_t	len;
 
@@ -82,7 +83,10 @@ static char	**set_map(int fd, ssize_t map_line)
 	if (!map || map_line <= 0)
 	{
 		close(fd);
-		exit_error(MSG_MALLOC_ERROR, map, FAIL);
+		free(map);
+		if (map_line <= 0)
+			exit_error(MSG_ERROR_OPEN_DIRECTORY, NULL, FAIL);
+		exit_error(MSG_MALLOC_ERROR, NULL, FAIL);
 	}
 	i = 0;
 	while (i < (size_t)map_line)
@@ -106,11 +110,11 @@ char	**get_map(int argc, char **argv)
 
 	if (argc != 2)
 		exit_error(MSG_INVALID_FMT, NULL, FAIL);
-	if (!is_valid_extention(argv[1]))
-		exit_error(MSG_INVALID_EXTENTION, NULL, FAIL);
+	if (!is_valid_extension(argv[1]))
+		exit_error(MSG_INVALID_EXTENSION, NULL, FAIL);
 	fd_map_file = open(argv[1], O_RDONLY);
 	if (fd_map_file == -1)
-		exit_error(MSG_INVALIDE_PATH, NULL, FAIL);
+		exit_error(MSG_INVALID_PATH, NULL, FAIL);
 	map = set_map(fd_map_file, get_number_line_file(argv[1]));
 	close(fd_map_file);
 	if (!map)

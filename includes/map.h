@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:56:32 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 11:01:47 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 18:53:41 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 # define MSG_INVALID_FMT "Error\nuse the format: ./so_long <map_path>\n"
 
-# define MSG_INVALID_EXTENTION "Error\nthe file must be a .ber file.\n"
+# define MSG_INVALID_EXTENSION "Error\nthe file must be a .ber file.\n"
 
-# define MSG_INVALIDE_PATH "Error\ninvalid file path.\n"
+# define MSG_INVALID_PATH "Error\ninvalid file path.\n"
 
 # define MSG_EMPTY_FILE "Error\nempty map file...\n"
 
@@ -38,6 +38,9 @@ you can open a ticket at: https://github.com/lasere77/so_long\n"
 
 # define MSG_MALLOC_ERROR "Error\nMemory failure... \
 Please check that your pc is not on fire.\n"
+
+# define MSG_ERROR_OPEN_DIRECTORY "Error\ndid you just \
+try to open a directory?! or the file is empty?! please open a file containing a map.\n"
 
 # define MSG_ERROR_TEXTURES_NOT_FOUND "Error\ntexture not found...\n"
 
