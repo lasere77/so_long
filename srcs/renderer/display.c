@@ -6,11 +6,12 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:14 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 11:07:18 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 15:02:56 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
+#include "window.h"
 
 void	display_exit(t_data *data)
 {
@@ -25,7 +26,7 @@ void	display_exit(t_data *data)
 		+ exit_pos[0] * SPRITE_SIZE;
 	sprite_offset_y = data->height / 2 - data->player.y * SPRITE_SIZE
 		+ exit_pos[1] * SPRITE_SIZE;
-	mlx_put_image_to_window(data->mlx, data->window, data->exit,
+	mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_exit],
 		sprite_offset_x, sprite_offset_y);
 }
 
@@ -48,7 +49,7 @@ void	display_collectible(t_data *data)
 				+ i * SPRITE_SIZE;
 			if (data->map[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx, data->window,
-					data->collectible, sprite_offset_x, sprite_offset_y);
+					data->sprites[sprite_collectible], sprite_offset_x, sprite_offset_y);
 			j++;
 		}
 		i++;
@@ -58,22 +59,22 @@ void	display_collectible(t_data *data)
 static void	display(char c, t_data *data, int sprite_offset_x, int sprite_offset_y)
 {
 	if (c == '1')
-		mlx_put_image_to_window(data->mlx, data->window, data->wall,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_wall],
 			sprite_offset_x, sprite_offset_y);
 	if (c == '0')
-		mlx_put_image_to_window(data->mlx, data->window, data->floor,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
 			sprite_offset_x, sprite_offset_y);
 	if (c == 'C')
-		mlx_put_image_to_window(data->mlx, data->window, data->floor,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
 			sprite_offset_x, sprite_offset_y);
 	if (c == 'E')
-		mlx_put_image_to_window(data->mlx, data->window, data->floor,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
 			sprite_offset_x, sprite_offset_y);
 	if (c == 'Z')
-		mlx_put_image_to_window(data->mlx, data->window, data->floor,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
 			sprite_offset_x, sprite_offset_y);
 	if (c == 'P')
-		mlx_put_image_to_window(data->mlx, data->window, data->floor,
+		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
 			sprite_offset_x, sprite_offset_y);
 }
 
@@ -101,7 +102,7 @@ void	display_map(t_data *data)
 	}
 }
 
-void	display_enemy(t_data *data)
+void	display_enemy(t_data *data, int sprite_index)
 {
 	size_t	i;
 	size_t	j;
@@ -120,7 +121,7 @@ void	display_enemy(t_data *data)
 				+ i * SPRITE_SIZE;
 			if (data->map[i][j] == 'Z')
 				mlx_put_image_to_window(data->mlx, data->window,
-					data->enemy, sprite_offset_x, sprite_offset_y);
+					data->sprites[sprite_index], sprite_offset_x, sprite_offset_y);
 			j++;
 		}
 		i++;

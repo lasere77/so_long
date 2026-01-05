@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:37 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 11:05:44 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 15:03:44 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 void	display_exit(t_data *data);
 void	display_collectible(t_data *data);
 void	display_map(t_data *data);
-void	display_enemy(t_data *data);
+void	display_enemy(t_data *data, int sprite_index);
 
 #endif

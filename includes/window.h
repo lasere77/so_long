@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 13:45:50 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 14:53:50 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,23 @@
 # define SPRITE_SIZE 64
 # define WINDOW_SIZE_PER_SPRITE 64
 # define FPS_GOAl 60
+# define NB_TEXTURE_ENEMY 3
+
+typedef enum e_sprite
+{
+	sprite_floor,
+	sprite_wall,
+	sprite_collectible,
+	sprite_exit,
+	sprite_player,
+	sprite_enemy0,
+	sprite_enemy1,
+	sprite_enemy2,
+}	t_sprite;
+
 
 typedef struct s_player
 {
-	mlx_image	sprite;
 	size_t		x;
 	size_t		y;
 	size_t		nb_item;
@@ -34,11 +47,7 @@ typedef struct s_data
 {
 	mlx_context	mlx;
 	mlx_window	window;
-	mlx_image	floor;
-	mlx_image	wall;
-	mlx_image	collectible;
-	mlx_image	exit;
-	mlx_image	enemy;
+	mlx_image	sprites[5 + NB_TEXTURE_ENEMY];
 	t_player	player;
 	char		**map;
 	int			width;

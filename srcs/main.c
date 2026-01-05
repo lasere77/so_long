@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 09:49:39 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 15:02:35 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,18 @@ static void	update(void *param)
 	char	*str;
 
 	data = (t_data *)param;
-	enemy_animation(data);
 	if (is_player_ending_game(data))
 		mlx_loop_end(((t_data *)param)->mlx);
 	mlx_clear_window(data->mlx, data->window, (mlx_color){.rgba = 0});
 	display_map(data);
 	display_collectible(data);
 	display_exit(data);
-	display_enemy(data);
+	display_enemy(data, enemy_animation());
 	str = ft_itoa(data->player.nb_move);
 	if (str)
 		mlx_string_put(data->mlx, data->window, 20, 20, (mlx_color){ .rgba = 0x0020FFFF }, str);
 	free(str);
-	mlx_put_image_to_window(data->mlx, data->window, data->player.sprite,
+	mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_player],
 		data->width / 2, data->height / 2);
 }
 
