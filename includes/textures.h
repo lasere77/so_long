@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 11:31:05 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 17:57:21 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:22:53 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ typedef enum e_sprite
 }	t_sprite;
 
 char	set_texture(t_data *data);
-int		enemy_animation();
+int		enemy_animation(void);
 
 #endif

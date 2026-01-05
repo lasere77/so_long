@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:14 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 16:20:06 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:05:56 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,35 @@ void	display_collectible(t_data *data)
 				+ i * SPRITE_SIZE;
 			if (data->map[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx, data->window,
-					data->sprites[sprite_collectible], sprite_offset_x, sprite_offset_y);
+					data->sprites[sprite_collectible],
+					sprite_offset_x, sprite_offset_y);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	display(char c, t_data *data, int sprite_offset_x, int sprite_offset_y)
+static void	display(char c, t_data *data,
+int sprite_offset_x, int sprite_offset_y)
 {
 	if (c == '1')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_wall],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_wall], sprite_offset_x, sprite_offset_y);
 	if (c == '0')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_floor], sprite_offset_x, sprite_offset_y);
 	if (c == 'C')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_floor], sprite_offset_x, sprite_offset_y);
 	if (c == 'E')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_floor], sprite_offset_x, sprite_offset_y);
 	if (c == 'Z')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_floor], sprite_offset_x, sprite_offset_y);
 	if (c == 'P')
-		mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_floor],
-			sprite_offset_x, sprite_offset_y);
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->sprites[sprite_floor], sprite_offset_x, sprite_offset_y);
 }
 
 void	display_map(t_data *data)
@@ -122,7 +124,8 @@ void	display_enemy(t_data *data, int sprite_index)
 				+ i * SPRITE_SIZE;
 			if (data->map[i][j] == 'Z')
 				mlx_put_image_to_window(data->mlx, data->window,
-					data->sprites[sprite_index], sprite_offset_x, sprite_offset_y);
+					data->sprites[sprite_index],
+					sprite_offset_x, sprite_offset_y);
 			j++;
 		}
 		i++;

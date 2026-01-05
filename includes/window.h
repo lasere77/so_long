@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 15:49:16 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 17:09:08 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:23:04 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,9 @@
 
 # define SPRITE_SIZE 64
 # define WINDOW_SIZE_PER_SPRITE 64
-# define FPS_GOAl 60
-# define NB_TEXTURE_FLOOR 1
-# define NB_TEXTURE_WALL 1
-# define NB_TEXTURE_COLLECTIBLE 1
-# define NB_TEXTURE_EXIT 1
-# define NB_TEXTURE_PLAYER 1
+# define FPS_GOAL 60
 # define NB_TEXTURE_ENEMY 3
-# define NB_TOTAL_TEXTRE NB_TEXTURE_FLOOR + NB_TEXTURE_WALL \
-+ NB_TEXTURE_COLLECTIBLE + NB_TEXTURE_EXIT  + NB_TEXTURE_PLAYER + NB_TEXTURE_ENEMY
+# define NB_TOTAL_TEXTRE 8
 
 typedef struct s_player
 {

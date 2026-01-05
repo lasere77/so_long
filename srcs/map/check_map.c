@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 11:01:32 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 18:15:04 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 18:58:11 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	is_surrounded_map(char **map)
 
 static void	flood_fill(char **map, size_t x, size_t y)
 {
-	if (map[y][x] == '1' || map[y][x] == 'Z' ||map[y][x] == '~')
+	if (map[y][x] == '1' || map[y][x] == 'Z' || map[y][x] == '~')
 		return ;
 	map[y][x] = '~';
 	flood_fill(map, x + 1, y);

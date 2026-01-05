@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 15:02:35 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:20:34 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ static void	update(void *param)
 	display_enemy(data, enemy_animation());
 	str = ft_itoa(data->player.nb_move);
 	if (str)
-		mlx_string_put(data->mlx, data->window, 20, 20, (mlx_color){ .rgba = 0x0020FFFF }, str);
+		mlx_string_put(data->mlx, data->window, 20, 20,
+			(mlx_color){.rgba = 0x0020FFFF}, str);
 	free(str);
-	mlx_put_image_to_window(data->mlx, data->window, data->sprites[sprite_player],
-		data->width / 2, data->height / 2);
+	mlx_put_image_to_window(data->mlx, data->window,
+		data->sprites[sprite_player], data->width / 2, data->height / 2);
 }
 
 int	main(int argc, char **argv)
@@ -82,7 +83,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_window(&data);
-	mlx_set_fps_goal(data.mlx, FPS_GOAl);
+	mlx_set_fps_goal(data.mlx, FPS_GOAL);
 	if (set_texture(&data))
 	{
 		destroy_window(&data);

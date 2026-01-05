@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:19:41 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 12:43:27 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 18:54:30 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ static void	window_hook(int event, void *param)
 char	is_player_ending_game(t_data *data)
 {
 	if ((!data->player.nb_item
-		&& data->map[data->player.y][data->player.x] == 'E') 
-		|| data->map[data->player.y][data->player.x] == 'Z')
-		return  (1);
-	return  (0);
+			&& data->map[data->player.y][data->player.x] == 'E')
+			|| data->map[data->player.y][data->player.x] == 'Z')
+		return (1);
+	return (0);
 }
 
 void	init_event(t_data *data)

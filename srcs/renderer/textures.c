@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 11:30:23 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 18:08:31 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:20:25 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 #include <unistd.h>
 #include <sys/time.h>
 
-int	enemy_animation()
+int	enemy_animation(void)
 {
 	static size_t			i = 0;
 	static unsigned char	j = 0;
 
-	if (i > FPS_GOAl / 2)
+	if (i > FPS_GOAL / 2)
 	{
 		j++;
 		i = 0;
@@ -46,7 +46,7 @@ int	enemy_animation()
  * @warning: This table must follow the same order as that of e_sprite
  * located in the textures.h file.
  */
-static const char *g_index_textures[] = {
+static const char	*g_index_textures[] = {
 	TEXTURE_FLOOR,
 	TEXTURE_WALL,
 	TEXTURE_EXIT,
@@ -64,7 +64,8 @@ char	set_texture(t_data *data)
 	i = 0;
 	while (i < NB_TOTAL_TEXTRE)
 	{
-		data->sprites[i] = mlx_new_image_from_file(data->mlx, (char *)g_index_textures[i], NULL, NULL);
+		data->sprites[i] = mlx_new_image_from_file(data->mlx,
+				(char *)g_index_textures[i], NULL, NULL);
 		if (!data->sprites[i])
 			return (1);
 		i++;

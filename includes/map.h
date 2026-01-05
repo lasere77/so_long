@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:56:32 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 18:53:41 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 19:10:49 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ you can open a ticket at: https://github.com/lasere77/so_long\n"
 Please check that your pc is not on fire.\n"
 
 # define MSG_ERROR_OPEN_DIRECTORY "Error\ndid you just \
-try to open a directory?! or the file is empty?! please open a file containing a map.\n"
+try to open a directory?! or the file is empty?! \
+please open a file containing a map.\n"
 
 # define MSG_ERROR_TEXTURES_NOT_FOUND "Error\ntexture not found...\n"
 
