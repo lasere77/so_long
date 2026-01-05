@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:49:09 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/04 16:11:39 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 09:49:39 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "textures.h"
 #include "mlx.h"
 #include <unistd.h>
-
-#define PATH_FONT "font/font.ttf"
 
 static size_t	get_nb_total_collectible(char **map)
 {
@@ -93,7 +91,7 @@ int	main(int argc, char **argv)
 	}
 	init_event(&data);
 	init_player(&(data.player), data.map);
-	mlx_set_font_scale(data.mlx, PATH_FONT, 16.f);
+	mlx_set_font_scale(data.mlx, "default", 16.f);
 	mlx_add_loop_hook(data.mlx, update, &data);
 	mlx_loop(data.mlx);
 	destroy_window(&data);
