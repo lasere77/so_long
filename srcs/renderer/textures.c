@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 11:30:23 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 15:13:46 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 18:08:31 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@
 #include <stddef.h>
 #include <unistd.h>
 #include <sys/time.h>
-
-static char	check_texture()
-{
-	if (access(TEXTURE_FLOOR, R_OK) || access(TEXTURE_WALL, R_OK)
-		|| access(TEXTURE_EXIT, R_OK) || access(TEXTURE_COLLECTIBLE, R_OK)
-		|| access(TEXTURE_PLAYER, R_OK) || access(TEXTURE_ENEMY0, R_OK)
-		|| access(TEXTURE_ENEMY1, R_OK) || access(TEXTURE_ENEMY2, R_OK))
-		return (1);
-	return (0);
-}
 
 int	enemy_animation()
 {
@@ -52,20 +42,32 @@ int	enemy_animation()
 	return (sprite_enemy0);
 }
 
+/**
+ * @warning: This table must follow the same order as that of e_sprite
+ * located in the textures.h file.
+ */
+static const char *g_index_textures[] = {
+	TEXTURE_FLOOR,
+	TEXTURE_WALL,
+	TEXTURE_EXIT,
+	TEXTURE_COLLECTIBLE,
+	TEXTURE_PLAYER,
+	TEXTURE_ENEMY0,
+	TEXTURE_ENEMY1,
+	TEXTURE_ENEMY2
+};
+
 char	set_texture(t_data *data)
 {
-	if (check_texture())
-		return (1);
-	data->sprites[sprite_floor] = mlx_new_image_from_file(data->mlx, TEXTURE_FLOOR, NULL, NULL);
-	data->sprites[sprite_wall] = mlx_new_image_from_file(data->mlx, TEXTURE_WALL, NULL, NULL);
-	data->sprites[sprite_exit] = mlx_new_image_from_file(data->mlx, TEXTURE_EXIT, NULL, NULL);
-	data->sprites[sprite_collectible] = mlx_new_image_from_file(data->mlx,
-			TEXTURE_COLLECTIBLE, NULL, NULL);
-	data->sprites[sprite_enemy0] = mlx_new_image_from_file(data->mlx, TEXTURE_ENEMY0, NULL, NULL);
-	data->sprites[sprite_enemy1] = mlx_new_image_from_file(data->mlx, TEXTURE_ENEMY1, NULL, NULL);
-	data->sprites[sprite_enemy2] = mlx_new_image_from_file(data->mlx, TEXTURE_ENEMY2, NULL, NULL);
-	data->sprites[sprite_player] = mlx_new_image_from_file(data->mlx,
-			TEXTURE_PLAYER, NULL, NULL);
+	size_t	i;
 
+	i = 0;
+	while (i < NB_TOTAL_TEXTRE)
+	{
+		data->sprites[i] = mlx_new_image_from_file(data->mlx, (char *)g_index_textures[i], NULL, NULL);
+		if (!data->sprites[i])
+			return (1);
+		i++;
+	}
 	return (0);
 }

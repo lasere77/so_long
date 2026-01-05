@@ -6,11 +6,13 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:59:38 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 15:14:29 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 17:56:15 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
+#include "textures.h"
+#include <stddef.h>
 
 size_t	get_ideal_window_height(char **map)
 {
@@ -38,22 +40,15 @@ void	init_window(t_data *data)
 
 void	destroy_window(t_data *data)
 {
-	if (data->sprites[sprite_floor])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_floor]);
-	if (data->sprites[sprite_wall])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_wall]);
-	if (data->sprites[sprite_exit])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_exit]);
-	if (data->sprites[sprite_collectible])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_collectible]);
-	if (data->sprites[sprite_enemy0])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_enemy0]);
-	if (data->sprites[sprite_enemy1])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_enemy1]);
-	if (data->sprites[sprite_enemy2])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_enemy2]);
-	if (data->sprites[sprite_player])
-		mlx_destroy_image(data->mlx, data->sprites[sprite_player]);
+	size_t	i;
+
+	i = 0;
+	while (i < NB_TOTAL_TEXTRE)
+	{
+		if (data->sprites[i])
+			mlx_destroy_image(data->mlx, data->sprites[i]);
+		i++;
+	}
 	mlx_destroy_window(data->mlx, data->window);
 	mlx_destroy_context(data->mlx);
 	ft_free_split(data->map);

@@ -6,12 +6,13 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:14 by mcolin            #+#    #+#             */
-/*   Updated: 2026/01/05 15:02:56 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/05 16:20:06 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "display.h"
 #include "window.h"
+#include "textures.h"
 
 void	display_exit(t_data *data)
 {
